@@ -19,6 +19,37 @@ app.get('/leads', (req, res) => {
     res.json(leads);
     
 });
+app.post('/leads', (req, res) => {
+    const newLead = req.body;
+
+    if(!newLead.name || !newLead.contact){
+        return res.status(400).json({message: 'Name and contact are required'});
+    }
+
+    fs.readFile(DATA_FILE, 'utf8', (err, data) => {
+        if (err){
+            return res.status(500).json({message: 'Error reading leads data'});
+    }
+    
+    const leads = JSON.parse(data || '[]');
+
+    newLead.id = leads.length>0 ? leads[leads.length - 1].id+1:1;
+    newLeads.status = newLead.status || 'New';
+
+    leads.push(newLead);
+
+    fs.writeFile(DATA_FILE, JSON.stringify(leads, null, 2), (err) => {
+        if(err){
+            return res.status(500).json({message: 'Error saving lead'});
+
+        }
+        res.status(201).json(newLead);
+        });
+
+    });
+
+});
+
 app.listen(PORT, () => {
     app.listen(PORT, () => {
         console.log('Server running on port ${PORT}');
