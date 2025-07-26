@@ -80,6 +80,33 @@ app.put('/leads/:id', (req,res) => {
         });
     });
 });
+
+app.delete('/leads/:id', (req, res) => {
+    const leadId = parseInt(req.params.id);
+
+    fs.readFile(DATA_FILE, 'utf8', (err, data) => {
+        if (err){
+            return res.status(500).json({message: 'Eroor reading leads data'});
+
+        }
+        let leads = JSON.parse(data || '[]');
+        const index = leads.findIndex(lead => lead.id === leadId);
+
+        if (index === -1){
+            return res.status(404).json({message: 'Lead not found'});
+        }
+
+        const deletedLead = leads.splice(index, 1)[0];
+
+        fs.writeFile(DATA_FILE, JSON.stringify(leads, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({message: 'Error deleting lead'});
+            }
+            res.json({message: 'Lead deleted successfully', deletedLead});
+
+        });
+    });
+});
 app.listen(PORT, () => {
     app.listen(PORT, () => {
         console.log('Server running on port ${PORT}');
