@@ -49,7 +49,37 @@ app.post('/leads', (req, res) => {
     });
 
 });
+app.put('/leads/:id', (req,res) => {
+    const leadId = parseInt(req.params.id);
+    const updatedLead = req.body;
 
+    if (!updatedLead.name || !updatedLead.contact){
+        return res.status(400).json({message: 'Name and contact are required'});
+    }
+
+    fs.readFile(DATA_FILE, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({message: 'Error reading leads data'});
+    }
+    let leads = JSON.parse(data || '[]');
+    const index = leads.findIndex(lead => lead.id === leadId);
+
+    if(index === -1){
+        return res.status(404).json({message: 'Lead not found'});
+    }
+    updatedLead.id = leadId;
+    updatedLead.status = updatedLead.status || leads[index].status || 'New';
+
+    leads[index] = updatedLead;
+
+    fs.writeFile(DATA_FILE, JSON.stringify(leads, null, 2), (err) => {
+        if (err){
+            return res.status(500).json({message: 'Error saving updated lead'});
+        }
+        res.json(updatedLead);
+        });
+    });
+});
 app.listen(PORT, () => {
     app.listen(PORT, () => {
         console.log('Server running on port ${PORT}');
