@@ -22,9 +22,13 @@ app.get('/leads', (req, res) => {
 app.post('/leads', (req, res) => {
     const newLead = req.body;
 
-    if(!newLead.name || !newLead.contact){
-        return res.status(400).json({message: 'Name and contact are required'});
-    }
+    if (!newLead.name || !newLead.contact) {
+    return res.status(400).json({ message: 'Name and contact are required' });
+}
+
+if (newLead.status && !['New', 'Contacted', 'Interested', 'Converted', 'Rejected'].includes(newLead.status)) {
+    return res.status(400).json({ message: 'Invalid status value' });
+}
 
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
         if (err){
@@ -55,6 +59,10 @@ app.put('/leads/:id', (req,res) => {
 
     if (!updatedLead.name || !updatedLead.contact){
         return res.status(400).json({message: 'Name and contact are required'});
+        
+    if(updatedLead.status && !['New', 'Contacted', 'Interested', 'Converted','Rejected'].includes(updatedLead.status)) {
+    return res.status(400).json({message: 'Invalid status value'});
+    }     
     }
 
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
@@ -106,6 +114,11 @@ app.delete('/leads/:id', (req, res) => {
 
         });
     });
+});
+app.use((err,req,res,next) => {
+    console.error(err.stack);
+    res.status(500).json({message: 'Something went wrong on the server!'});
+
 });
 app.listen(PORT, () => {
     app.listen(PORT, () => {
