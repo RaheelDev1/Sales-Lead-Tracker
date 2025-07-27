@@ -48,3 +48,24 @@ leadForm.addEventListener('submit', async (e) => {
     leadForm.reset();
     fetchLeads(); // refresh table
 });
+
+async function editLead(id) {
+    const newName = prompt('Enter new name:');
+    const newContact = prompt('Enter new contact:');
+    const newStatus = prompt('Enter status (New, Contacted, Interested, Converted, Rejected):');
+
+    const updatedLead = { 
+        name: newName, 
+        contact: newContact, 
+        status: newStatus 
+    };
+
+    await fetch(`${API_URL}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedLead)
+    });
+
+    fetchLeads(); // reload updated data
+}
+
