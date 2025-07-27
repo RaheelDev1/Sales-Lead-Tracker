@@ -27,3 +27,24 @@ async function fetchLeads() {
 
 // Fetch leads when page loads
 fetchLeads();
+
+leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // stop page refresh
+
+    const newLead = {
+        name: document.getElementById('name').value,
+        contact: document.getElementById('contact').value,
+        status: document.getElementById('status').value || 'New',
+        notes: document.getElementById('notes').value,
+        source: document.getElementById('source').value
+    };
+
+    await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newLead)
+    });
+
+    leadForm.reset();
+    fetchLeads(); // refresh table
+});
