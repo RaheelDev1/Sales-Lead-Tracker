@@ -73,3 +73,11 @@ async function editLead(id) {
     fetchLeads(); // reload updated data
 }
 
+//Delete a lead by ID after confirming from user
+
+async function deleteLead(id){
+    if(confirm('Are you sure you want to delete this lead?')) {
+       await fetch(`${API_URL}/${id}`, {method: 'DELETE'});
+       fetchLeads(); //refresh table after deletion
+    }
+}
