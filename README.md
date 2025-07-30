@@ -1,7 +1,9 @@
 # Sales Lead Management & Tracking System
 For Dowling Property, Kilcullen
 
-This is a simple CRUD application to manage and track sales leads.
+This is a simple CRUD (Create, Read, Update, Delete) application to manage and track sales leads for Dowling Property.
+
+---
 
 ## Tech Stack
 - Node.js
@@ -9,59 +11,38 @@ This is a simple CRUD application to manage and track sales leads.
 - JSON File as Database
 - HTML, CSS, JavaScript (Frontend)
 
+---
+
+## Features
+- Add new sales leads
+- View all leads in a table
+- Edit existing lead details
+- Delete leads when no longer required
+
+---
+
 ## API Endpoints
+- **GET** `/leads` – Fetch all leads
+- **POST** `/leads` – Add a new lead
+- **PUT** `/leads/:id` – Update lead details
+- **DELETE** `/leads/:id` – Delete a lead
 
-```
-1. Get All Leads
-GET /leads  
-Response:  
-[
-  {
-    "id": 1,
-    "name": "John Doe",
-    "contact": "john@example.com",
-    "status": "Interested",
-    "notes": "Wants to view property next week",
-    "source": "Phone Call"
-  }
-]
+---
 
-2. Create New Lead
-POST /leads  
-Request Body:  
-{
-  "name": "Jane Smith",
-  "contact": "jane@example.com",
-  "status": "New",
-  "notes": "First-time buyer",
-  "source": "Website"
-}
+## Screenshots (to be added after testing)
+1. Application Homepage  
+2. Adding a Lead  
+3. Editing a Lead  
+4. Deleting a Lead  
 
-3. Update Lead
-PUT /leads/:id  
-Request Body:  
-{
-  "name": "Jane Smith",
-  "contact": "jane@newmail.com",
-  "status": "Contacted",
-  "notes": "Call scheduled for Monday"
-}
+---
 
-4. Delete Lead
-DELETE /leads/:id
-```
-## Statuses
-Allowed values for status:
-- New
-- Contacted
-- Interested
-- Converted
-- Rejected
-
-## Future Features
+## Future Enhancements
 - Search and filter leads
-- Frontend interface for managing leads
-- Dashboard showing status counts
+- Dashboard with status summary
+- Export to CSV
+
+---
 
 ## Author
 Raheel Abbas
