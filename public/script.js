@@ -3,6 +3,7 @@ const leadsTableBody = document.querySelector('#leadsTable tbody');
 const leadForm = document.getElementById('leadForm');
 
 // fetch all leads from the backend and display them in the table 
+
     async function fetchLeads() {
     const response = await fetch(API_URL);
     const leads = await response.json();
@@ -29,6 +30,8 @@ const leadForm = document.getElementById('leadForm');
 // Fetch leads when page loads
 fetchLeads();
 
+
+//Hanle form submission: stop page refresh, send new lead data to backend, and refresh the table
 leadForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // stop page refresh
 
