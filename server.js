@@ -1,16 +1,28 @@
+// Import required modules
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
+
+// Initialize Express app and define port
+
 const PORT = 3000;
 const fs = require('fs');
 const DATA_FILE = './leads.json';
 
+// Enable CORS and allow JSON request body parsing
+
 app.use(cors());
 app.use(express.json());
+
+// Default route for checking if API is running
 
 app.get('/', (req, res) => {
     res.send('Sales Lead Tracker API is running...');
 });
+
+// Fetch all leads from leads.json
+
 app.get('/leads', (req, res) => {
     if (err) {
         return res.status(500).json({message: 'Error reading leads data'});
@@ -19,6 +31,9 @@ app.get('/leads', (req, res) => {
     res.json(leads);
     
 });
+
+// Add a new lead to leads.json
+
 app.post('/leads', (req, res) => {
     const newLead = req.body;
 
@@ -53,6 +68,9 @@ if (newLead.status && !['New', 'Contacted', 'Interested', 'Converted', 'Rejected
     });
 
 });
+
+// Update a lead by ID
+
 app.put('/leads/:id', (req,res) => {
     const leadId = parseInt(req.params.id);
     const updatedLead = req.body;
@@ -89,6 +107,8 @@ app.put('/leads/:id', (req,res) => {
     });
 });
 
+// Delete a lead by ID
+
 app.delete('/leads/:id', (req, res) => {
     const leadId = parseInt(req.params.id);
 
@@ -120,6 +140,9 @@ app.use((err,req,res,next) => {
     res.status(500).json({message: 'Something went wrong on the server!'});
 
 });
+
+// Start the server
+
 app.listen(PORT, () => {
     app.listen(PORT, () => {
         console.log('Server running on port ${PORT}');
