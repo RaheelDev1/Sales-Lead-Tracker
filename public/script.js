@@ -1,3 +1,5 @@
+// API endpoint for backend leads data
+
 const API_URL = 'http://localhost:3000/leads';
 const leadsTableBody = document.querySelector('#leadsTable tbody');
 const leadForm = document.getElementById('leadForm');
@@ -9,6 +11,9 @@ const leadForm = document.getElementById('leadForm');
     const leads = await response.json();
 
     leadsTableBody.innerHTML = '';
+
+    // Loop through all leads and create table rows
+
     leads.forEach(lead => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -32,6 +37,7 @@ fetchLeads();
 
 
 //Hanle form submission: stop page refresh, send new lead data to backend, and refresh the table
+
 leadForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // stop page refresh
 
