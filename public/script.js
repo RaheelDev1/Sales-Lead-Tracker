@@ -2,7 +2,8 @@ const API_URL = 'http://localhost:3000/leads';
 const leadsTableBody = document.querySelector('#leadsTable tbody');
 const leadForm = document.getElementById('leadForm');
 
-async function fetchLeads() {
+// fetch all leads from the backend and display them in the table 
+    async function fetchLeads() {
     const response = await fetch(API_URL);
     const leads = await response.json();
 
