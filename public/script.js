@@ -1,4 +1,4 @@
-// API endpoint for backend leads data
+// Fetch and display all leads from backend API
 
 const API_URL = 'http://localhost:3000/leads';
 const leadsTableBody = document.querySelector('#leadsTable tbody');
