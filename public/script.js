@@ -7,6 +7,9 @@ const leadForm = document.getElementById('leadForm');
 // fetch all leads from the backend and display them in the table 
 
     async function fetchLeads() {
+        
+    console.log('Fetching leads from API...');
+
     const response = await fetch(API_URL);
     const leads = await response.json();
 
