@@ -7,7 +7,7 @@ const leadForm = document.getElementById('leadForm');
 // fetch all leads from the backend and display them in the table 
 
     async function fetchLeads() {
-        
+
     console.log('Fetching leads from API...');
 
     const response = await fetch(API_URL);
@@ -36,8 +36,8 @@ const leadForm = document.getElementById('leadForm');
 }
 
 // Fetch leads when page loads
-fetchLeads();
 
+fetchLeads();
 
 //Hanle form submission: stop page refresh, send new lead data to backend, and refresh the table
 
@@ -87,6 +87,7 @@ async function editLead(id) {
 async function deleteLead(id){
     if(confirm('Are you sure you want to delete this lead?')) {
        await fetch(`${API_URL}/${id}`, {method: 'DELETE'});
+       
        fetchLeads(); //refresh table after deletion
     }
 }
