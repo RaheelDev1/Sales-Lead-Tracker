@@ -24,8 +24,8 @@ const leadForm = document.getElementById('leadForm');
             <td>${lead.notes || ''}</td>
             <td>${lead.source || ''}</td>
             <td>
-                <button onclick="editLead(${lead.id})">Edit</button>
-                <button onclick="deleteLead(${lead.id})">Delete</button>
+            <button onclick="editLead(${lead.id})">Edit Lead</button>
+            <button onclick="deleteLead(${lead.id})">Remove</button>
             </td>
         `;
         leadsTableBody.appendChild(row);
