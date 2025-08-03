@@ -31,13 +31,13 @@ This is a simple CRUD (Create, Read, Update, Delete) application to manage and t
 
 ## Screenshots
 ### Postman Testing
-![GET](screenshots/postman_get.jpeg)
-![POST](screenshots/postman_post.jpeg)
-![PUT](screenshots/postman_put.jpeg)
-![DELETE](screenshots/postman_delete.jpeg)
+![GET](screenshots/postman_get.jpg)
+![POST](screenshots/postman_post.jpg)
+![PUT](screenshots/postman_put.jpg)
+![DELETE](screenshots/postman_delete.jpg)
 
 ### Web Interfaces
-![UI](screenshots/ui_full_app.png)
+![UI](screenshots/ui_full_app.jpg)
 
 
 ---
