@@ -29,11 +29,16 @@ This is a simple CRUD (Create, Read, Update, Delete) application to manage and t
 
 ---
 
-## Screenshots (to be added after testing)
-1. Application Homepage  
-2. Adding a Lead  
-3. Editing a Lead  
-4. Deleting a Lead  
+## Screenshots
+### Postman Testing
+![GET](screenshots/postman_get.png)
+![POST](screenshots/postman_post.png)
+![PUT](screenshots/postman_put.png)
+![DELETE](screenshots/postman_delete.png)
+
+### Web Interface
+![UI](screenshots/ui_full_app.png)
+
 
 ---
 
