@@ -33,13 +33,13 @@ This is a simple CRUD (Create, Read, Update, Delete) application to manage and t
 
 ## Screenshots
 ### Postman Testing
-GET:  https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_get.JPG
-POST: https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_post.JPG
-PUT:  https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_put.JPG
-DELETE: https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_delete.JPG
+![GET](https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_get.JPG)
+![POST](https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_post.JPG)
+![PUT](https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_put.JPG)
+![DELETE](https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/postman_delete.JPG)
 
 ### Web Interface
-https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/ui_full_app.JPG
+![UI](https://github.com/RaheelDev1/Sales-Lead-Tracker/blob/main/screenshots/ui_full_app.JPG)
 
 
 ---
