@@ -87,8 +87,15 @@ async function editLead(id) {
 async function deleteLead(id){
     if(confirm('Are you sure you want to delete this lead?')) {
        await fetch(`${API_URL}/${id}`, {method: 'DELETE'});
-       
-       fetchLeads(); //refresh table after deletion
+
+       deleteButton.onclick = () => {
+    if (confirm("Are you sure you want to delete this lead?")) {
+        deleteLead(lead.id);
+
+    }
+};
+        fetchLeads(); //refresh table after deletion
+
     }
 function clearForm() {
     document.getElementById("leadForm").reset();
