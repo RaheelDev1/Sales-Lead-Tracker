@@ -15,15 +15,6 @@ const leadForm = document.getElementById('leadForm');
 
     leadsTableBody.innerHTML = '';
 
-    if (leads.length === 0) {
-    const noDataRow = table.insertRow();
-    const noDataCell = noDataRow.insertCell();
-    noDataCell.colSpan = 6;
-    noDataCell.innerText = "No leads available.";
-    noDataCell.style.textAlign = "center";
-    return;
-}
-
     // Loop through all leads and create table rows
 
     leads.forEach(lead => {
@@ -96,18 +87,11 @@ async function editLead(id) {
 async function deleteLead(id){
     if(confirm('Are you sure you want to delete this lead?')) {
        await fetch(`${API_URL}/${id}`, {method: 'DELETE'});
-
-       deleteButton.onclick = () => {
-    if (confirm("Are you sure you want to delete this lead?")) {
-        deleteLead(lead.id);
-
+       
+       fetchLeads(); //refresh table after deletion
     }
-};
-        fetchLeads(); //refresh table after deletion
-
-    }
-function clearForm() {
-    document.getElementById("leadForm").reset();
 }
 
+async function clearForm() {
+    document.getElementById("leadForm").reset();
 }
