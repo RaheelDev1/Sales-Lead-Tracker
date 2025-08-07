@@ -19,7 +19,7 @@
             border: 1px solid #ccc; border-radius: 4px;
             display: block; width: 300px; max-width: 100%;
         }
-        
+
         form textarea { height: 60px; resize: none; }
         form button { background: #d32f2f; color: white; border: none; padding: 10px 15px; cursor: pointer; }
         table { width: 100%; margin-top: 20px; border-collapse: collapse; }
@@ -50,6 +50,7 @@
     <textarea id="notes" placeholder="Notes"></textarea>
     <input type="text" id="source" placeholder="Source">
     <button type="submit">Add Lead</button>
+    <button type="button" onclick="clearForm()">Clear Form</button>
 </form>
 
 <h2>Leads List</h2>

@@ -90,4 +90,8 @@ async function deleteLead(id){
        
        fetchLeads(); //refresh table after deletion
     }
+function clearForm() {
+    document.getElementById("leadForm").reset();
+}
+
 }
