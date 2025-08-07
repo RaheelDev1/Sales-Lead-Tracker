@@ -15,6 +15,15 @@ const leadForm = document.getElementById('leadForm');
 
     leadsTableBody.innerHTML = '';
 
+    if (leads.length === 0) {
+    const noDataRow = table.insertRow();
+    const noDataCell = noDataRow.insertCell();
+    noDataCell.colSpan = 6;
+    noDataCell.innerText = "No leads available.";
+    noDataCell.style.textAlign = "center";
+    return;
+}
+
     // Loop through all leads and create table rows
 
     leads.forEach(lead => {
