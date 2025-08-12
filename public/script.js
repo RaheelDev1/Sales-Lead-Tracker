@@ -50,7 +50,7 @@ leadForm.addEventListener('submit', async (e) => {
         status: document.getElementById('status').value || 'New',
         notes: document.getElementById('notes').value,
         source: document.getElementById('source').value
-    };
+    }
 
     await fetch(API_URL, {
         method: 'POST',
@@ -92,6 +92,10 @@ async function deleteLead(id){
     }
 }
 
-async function clearForm() {
+function clearForm() {
     document.getElementById("leadForm").reset();
 }
+
+window.editLead = editLead;
+window.deleteLead = deleteLead;
+window.clearForm = clearForm;

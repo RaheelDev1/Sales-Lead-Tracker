@@ -12,6 +12,10 @@ const DATA_FILE = './leads.json';
 
 // Enable CORS and allow JSON request body parsing
 
+if(!fs.existsSync(DATA_FILE)){
+    fs.writeFileSync(DATA_FILE, '[]');
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -24,11 +28,13 @@ app.get('/', (req, res) => {
 // Fetch all leads from leads.json
 
 app.get('/leads', (req, res) => {
+    fs.readFile(DATA_FILE, 'utf8', (err, data)=> {
     if (err) {
         return res.status(500).json({message: 'Error reading leads data'});
     }
     const leads = JSON.parse(data || '[]');
     res.json(leads);
+});
     
 });
 
@@ -53,7 +59,7 @@ if (newLead.status && !['New', 'Contacted', 'Interested', 'Converted', 'Rejected
     const leads = JSON.parse(data || '[]');
 
     newLead.id = leads.length>0 ? leads[leads.length - 1].id+1:1;
-    newLeads.status = newLead.status || 'New';
+    newLead.status = newLead.status || 'New';
 
     leads.push(newLead);
 
@@ -77,10 +83,11 @@ app.put('/leads/:id', (req,res) => {
 
     if (!updatedLead.name || !updatedLead.contact){
         return res.status(400).json({message: 'Name and contact are required'});
+    }
         
     if(updatedLead.status && !['New', 'Contacted', 'Interested', 'Converted','Rejected'].includes(updatedLead.status)) {
     return res.status(400).json({message: 'Invalid status value'});
-    }     
+    
     }
 
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
@@ -114,7 +121,7 @@ app.delete('/leads/:id', (req, res) => {
 
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
         if (err){
-            return res.status(500).json({message: 'Eroor reading leads data'});
+            return res.status(500).json({message: 'Error reading leads data'});
 
         }
         let leads = JSON.parse(data || '[]');
@@ -142,10 +149,8 @@ app.use((err,req,res,next) => {
 });
 
 // Start the server
-
-app.listen(PORT, () => {
+    
     app.listen(PORT, () => {
-        console.log('Server running on port ${PORT}');
+    console.log(`Server running on port ${PORT}`);
 
     });
-});
